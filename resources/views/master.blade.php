@@ -33,7 +33,50 @@
                         GAReminder
                     </a>
                 </div>
+                @if(Auth::user()->role == 'Intern')
                 <ul class="nav">
+                    <li class="nav-item">
+                    <li>
+                        <a class="nav-link" href="reminder">
+                            <img src="{{asset('assets/images/ic_baseline-send.png')}}"></img>
+                            <p>Kirim Reminder</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="penerbangan">
+                            <img src="{{asset('assets/images/material-symbols_dashboard.png')}}"></img>
+                            <p>Data Penerbangan</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="histori_reminder.html">
+                            <img src="{{asset('assets/images/mdi_seat-passenger.png')}}"></img>
+                            <p>Histori Reminder</p>
+                        </a>
+                    </li>
+                    @elseif(Auth::user()->role == 'Karyawan')
+                    <ul class="nav">
+                    <li class="nav-item">
+                    <li>
+                        <a class="nav-link" href="reminder">
+                            <img src="{{asset('assets/images/ic_baseline-send.png')}}"></img>
+                            <p>Kirim Reminder</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="penerbangan">
+                            <img src="{{asset('assets/images/material-symbols_dashboard.png')}}"></img>
+                            <p>Data Penerbangan</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="histori_reminder.html">
+                            <img src="{{asset('assets/images/mdi_seat-passenger.png')}}"></img>
+                            <p>Histori Reminder</p>
+                        </a>
+                    </li>
+                    @else
+                    <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link" href="landing_page.html">
                             <img src="{{asset('assets/images/dasbor.png')}}"></img>
@@ -41,7 +84,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="kirim_reminder.html">
+                        <a class="nav-link" href="reminder">
                             <img src="{{asset('assets/images/ic_baseline-send.png')}}"></img>
                             <p>Kirim Reminder</p>
                         </a>
@@ -64,13 +107,7 @@
                             <p>Kelola Akun</p>
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="pengaturan.html">
-                            <img src="{{asset('assets/images/uil_setting.png')}}"></img>
-                            <p>Pengaturan</p>
-                        </a>
-                    </li>
-
+                    @endif
                 </ul>
             </div>
         </div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController as UserAuthController;
 use App\Http\Controllers\DataPenerbanganController as PenerbanganController;
 use App\Http\Controllers\KelolaUserController;
+use App\Http\Controllers\KirimReminderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +29,6 @@ Route::post('/logout', [UserAuthController::class, 'logout'])->name('logout');
 
 Route::get('/penerbangan', [PenerbanganController::class, 'index'])->name('penerbangan.index');
 Route::post('/penerbangan/store', [PenerbanganController::class, 'store'])->name('penerbangan.store');
-// Di web.php
 Route::get('/penerbangan/{id}/edit', [PenerbanganController::class, 'edit'])->name('penerbangan.edit');
 Route::put('/penerbangan/{id}', [PenerbanganController::class, 'update'])->name('penerbangan.update');
 Route::delete('/penerbangan/{id}', [PenerbanganController::class, 'destroy'])->name('penerbangan.destroy');
@@ -39,3 +39,6 @@ Route::post('/users', [KelolaUserController::class, 'store'])->name('users.store
 Route::get('/users/{id}/edit', [KelolaUserController::class, 'edit'])->name('users.edit');
 Route::put('/users/{id}', [KelolaUserController::class, 'update'])->name('users.update');
 Route::delete('/users/{id}', [KelolaUserController::class, 'destroy'])->name('users.destroy');
+
+
+Route::get('/reminder', [KirimReminderController::class, 'index'])->name('reminder.index');
