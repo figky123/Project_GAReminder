@@ -18,4 +18,9 @@ class reminder extends Model
         'tgl_berangkat',
         'gambar_pesan',
     ];
+
+    public function historiReminder()
+    {
+        return $this->hasOne(HistoriReminder::class, 'id_penerbangan');
+    }
 }

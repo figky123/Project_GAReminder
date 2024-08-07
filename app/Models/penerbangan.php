@@ -16,4 +16,9 @@ class penerbangan extends Model
         'rute_penerbangan',
         'jam_penerbangan'
     ];
+    
+    public function historiReminder()
+    {
+        return $this->hasOne(HistoriReminder::class, 'id_reminder');
+    }
 }
