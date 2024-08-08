@@ -123,8 +123,8 @@
                             <form action="" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="no_telpon">Nomor Telepon</label>
-                                    <input type="text" class="form-control" id="no_telpon" name="no_telpon" required>
+                                    <label for="no_hp">Nomor Telepon</label>
+                                    <input type="text" class="form-control" id="no_hp" name="no_hp" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nomor_penerbangan">Nomor Penerbangan</label>
@@ -135,16 +135,16 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="tgl_keberangkatan">Tanggal Keberangkatan</label>
-                                    <input type="date" class="form-control" id="tgl_keberangkatan" name="tgl_keberangkatan" required>
+                                    <label for="tgl_berangkat">Tanggal Keberangkatan</label>
+                                    <input type="date" class="form-control" id="tgl_berangkat" name="tgl_berangkat" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="gambar">Gambar</label>
-                                    <input type="file" class="form-control" id="gambar" name="gambar" required>
+                                    <label for="gambar_pesan">Gambar</label>
+                                    <input type="file" class="form-control" id="gambar_pesan" name="gambar_pesan" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="pesan_teks">Pesan Teks</label>
-                                    <textarea class="form-control" id="pesan_teks" name="pesan_teks" rows="3" required></textarea>
+                                    <label for="isi_pesan">Pesan Teks</label>
+                                    <textarea class="form-control" id="isi_pesan" name="isi_pesan" rows="3" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="status_tiket">Status Tiket</label>
@@ -155,8 +155,8 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="keterangan">Keterangan</label>
-                                    <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
+                                    <label for="ket_pesan">Keterangan</label>
+                                    <textarea class="form-control" id="ket_pesan" name="ket_pesan" rows="3"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-block">Kirim</button>
                             </form>
