@@ -120,7 +120,7 @@
                             <h5 class="card-title">Form Kirim Reminder</h5>
                         </div>
                         <div class="card-body">
-                            <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('reminder.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="no_hp">Nomor Telepon</label>
@@ -129,8 +129,8 @@
                                 <div class="form-group">
                                     <label for="nomor_penerbangan">Nomor Penerbangan</label>
                                     <select name="nomor_penerbangan" id="nomor_penerbangan" class="form-control">
+                                        <option value="GA175">GA175</option>
                                         <option value="GA177">GA177</option>
-                                        <option value="GA178">GA178</option>
                                         <option value="GA179">GA179</option>
                                     </select>
                                 </div>
@@ -149,9 +149,8 @@
                                 <div class="form-group">
                                     <label for="status_tiket">Status Tiket</label>
                                     <select name="status_tiket" id="status_tiket" class="form-control">
-                                        <option value="un">UN</option>
-                                        <option value="tk">TK</option>
-                                        <option value="irregular">Irregular</option>
+                                        <option value="OK">OK</option>
+                                        <option value="Irregularity">Irregular</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

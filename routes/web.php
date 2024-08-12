@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController as UserAuthController;
 use App\Http\Controllers\DataPenerbanganController as PenerbanganController;
 use App\Http\Controllers\KelolaUserController;
 use App\Http\Controllers\KirimReminderController;
+use App\Http\Controllers\HistoriReminderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,3 +43,8 @@ Route::delete('/users/{id}', [KelolaUserController::class, 'destroy'])->name('us
 
 
 Route::get('/reminder', [KirimReminderController::class, 'index'])->name('reminder.index');
+Route::post('/reminder/store', [KirimReminderController::class, 'store'])->name('reminder.store');
+
+Route::get('/histori-reminders', [HistoriReminderController::class, 'index'])->name('historiReminder.index');
+
+Route::get('/export-histori-reminder', [HistoriReminderController::class, 'export'])->name('historiReminder.export');

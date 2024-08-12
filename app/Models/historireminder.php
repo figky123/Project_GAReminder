@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class HistoriReminder extends Model
 {
     use HasFactory;
-
+    protected $table = 'historireminders';
     protected $fillable = ['id_reminder', 'id_penerbangan'];
 
     // Definisikan relasi 1-to-1 dengan model Reminder

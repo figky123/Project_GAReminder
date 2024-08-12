@@ -49,7 +49,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="histori_reminder.html">
+                        <a class="nav-link" href="histori-reminders">
                             <img src="{{asset('assets/images/mdi_seat-passenger.png')}}"></img>
                             <p>Histori Reminder</p>
                         </a>
@@ -70,7 +70,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="histori_reminder.html">
+                        <a class="nav-link" href="histori-reminders">
                             <img src="{{asset('assets/images/mdi_seat-passenger.png')}}"></img>
                             <p>Histori Reminder</p>
                         </a>
@@ -96,7 +96,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="histori_reminder.html">
+                        <a class="nav-link" href="histori-reminders">
                             <img src="{{asset('assets/images/mdi_seat-passenger.png')}}"></img>
                             <p>Histori Reminder</p>
                         </a>
