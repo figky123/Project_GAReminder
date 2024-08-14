@@ -34,22 +34,34 @@
             flex-direction: column;
             align-items: center;
             margin: 20px;
-            /* Margin for spacing */
+        }
+
+        /* Define colors for icons */
+        .icon-edit {
+            color: #FFC107;
+        }
+
+        .icon-delete {
+            color: #DC3545;
+        }
+
+        /* Style for action buttons */
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
         }
 
         /* Search input styling */
         .search-container {
             margin-bottom: 20px;
             width: 100%;
-            /* Set container width */
             display: flex;
             justify-content: space-between;
-            /* Align search input and export button */
         }
 
         .search-input {
             width: 30%;
-            /* Adjusted width for search input */
             padding: 6px;
             font-size: 14px;
             border: 1px solid #ced4da;
@@ -70,7 +82,6 @@
 
         .pagination {
             margin: 20px 0;
-            /* Margin for spacing */
         }
 
         .pagination .page-item.active .page-link {
@@ -80,12 +91,10 @@
 
         .pagination .page-link {
             color: #007bff;
-            /* Primary color for links */
         }
 
         .pagination .page-link:hover {
             background-color: #e9ecef;
-            /* Light grey background on hover */
             border-color: #007bff;
         }
     </style>
@@ -105,8 +114,8 @@
                     <!-- Search input and Export button -->
                     <div class="search-container">
                         <input type="text" id="searchInput" class="search-input" placeholder="Cari Histori Reminder...">
-                        <a href="{{ route('historiReminder.export') }}" class="btn btn-success mb-3">
-                            <i class="fas fa-file-excel"></i> Export to Excel
+                        <a href="{{ route('export.pdf') }}" class="btn btn-danger mb-3">
+                            <i class="fas fa-file-pdf"></i> Export to PDF
                         </a>
                     </div>
 
@@ -120,6 +129,7 @@
                                     <th>Tanggal Keberangkatan</th>
                                     <th>Status Tiket</th>
                                     <th>Keterangan</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -128,9 +138,23 @@
                                     <td>{{ $startIndex + $index }}</td>
                                     <td>{{ $historiReminder->reminder->no_hp }}</td>
                                     <td>{{ $historiReminder->penerbangan->nomor_penerbangan }}</td>
-                                    <td>{{ $historiReminder->reminder->tgl_berangkat }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($historiReminder->reminder->tgl_berangkat)->translatedFormat('d F Y') }}</td>
                                     <td>{{ $historiReminder->reminder->status_tiket }}</td>
                                     <td>{{ $historiReminder->reminder->ket_pesan }}</td>
+                                    <td class="action-buttons">
+                                        <!-- Edit button -->
+                                        <a href="{{ route('reminder.index') }}" class="btn-action">
+                                            <i class="fas fa-edit icon-edit"></i>
+                                        </a>
+                                        <!-- Delete button -->
+                                        <form action="{{ route('reminder.destroy', $historiReminder->id) }}" method="POST" style="display:inline;" onsubmit="return confirmDelete()">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn-action">
+                                                <i class="fas fa-trash icon-delete"></i>
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -171,7 +195,7 @@
             rows.forEach(row => {
                 const cells = row.getElementsByTagName('td');
                 let found = false;
-                for (let i = 0; i < cells.length; i++) { // Search in all columns
+                for (let i = 0; i < cells.length; i++) {
                     if (cells[i].textContent.toLowerCase().includes(searchValue)) {
                         found = true;
                         break;
@@ -180,6 +204,11 @@
                 row.style.display = found ? '' : 'none';
             });
         });
+
+        // Confirmation for delete
+        function confirmDelete() {
+            return confirm('Apakah anda yakin ingin menghapus data ini?');
+        }
     </script>
 </body>
 

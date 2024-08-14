@@ -5,6 +5,7 @@ use App\Http\Controllers\DataPenerbanganController as PenerbanganController;
 use App\Http\Controllers\KelolaUserController;
 use App\Http\Controllers\KirimReminderController;
 use App\Http\Controllers\HistoriReminderController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,5 +47,7 @@ Route::get('/reminder', [KirimReminderController::class, 'index'])->name('remind
 Route::post('/reminder/store', [KirimReminderController::class, 'store'])->name('reminder.store');
 
 Route::get('/histori-reminders', [HistoriReminderController::class, 'index'])->name('historiReminder.index');
+Route::delete('/reminder/{id}', [HistoriReminderController::class, 'destroy'])->name('reminder.destroy');
 
-Route::get('/export-histori-reminder', [HistoriReminderController::class, 'export'])->name('historiReminder.export');
+Route::get('/export-pdf', [HistoriReminderController::class, 'exportPdf'])->name('export.pdf');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

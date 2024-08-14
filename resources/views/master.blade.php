@@ -78,7 +78,7 @@
                     @else
                     <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="landing_page.html">
+                        <a class="nav-link" href="dashboard">
                             <img src="{{asset('assets/images/dasbor.png')}}"></img>
                             <p>Dasbor</p>
                         </a>
