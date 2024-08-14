@@ -3,6 +3,7 @@
 @section('content')
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Kirim Reminder</title>
     <!-- DataTables CSS -->
@@ -120,7 +121,7 @@
                             <h5 class="card-title">Form Kirim Reminder</h5>
                         </div>
                         <div class="card-body">
-                        <form action="{{ route('reminder.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('reminder.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="no_hp">Nomor Telepon</label>
@@ -129,9 +130,9 @@
                                 <div class="form-group">
                                     <label for="nomor_penerbangan">Nomor Penerbangan</label>
                                     <select name="nomor_penerbangan" id="nomor_penerbangan" class="form-control">
-                                        <option value="GA175">GA175</option>
-                                        <option value="GA177">GA177</option>
-                                        <option value="GA179">GA179</option>
+                                        @foreach ($penerbanganValues as $nomor_penerbangan)
+                                        <option value="{{ $nomor_penerbangan }}">{{ $nomor_penerbangan }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -166,5 +167,6 @@
         </div>
     </div>
 </body>
+
 </html>
 @endsection

@@ -26,11 +26,15 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="nomor_penerbangan">Nomor Penerbangan</label>
-                        <select name="nomor_penerbangan" id="nomor_penerbangan" class="form-control">
-                            <option value="GA175" {{ $penerbangan->nomor_penerbangan == 'GA175' ? 'selected' : '' }}>GA175</option>
-                            <option value="GA177" {{ $penerbangan->nomor_penerbangan == 'GA177' ? 'selected' : '' }}>GA177</option>
-                            <option value="GA179" {{ $penerbangan->nomor_penerbangan == 'GA179' ? 'selected' : '' }}>GA179</option>
-                        </select>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">GA</span>
+                            </div>
+                            <input type="text" name="nomor_penerbangan" id="nomor_penerbangan" class="form-control" maxlength="3" pattern="\d{3}" value="{{ old('nomor_penerbangan', $penerbangan->nomor_penerbangan ? substr($penerbangan->nomor_penerbangan, 2) : '') }}" required>
+                        </div>
+                        @if ($errors->has('nomor_penerbangan'))
+                        <span class="text-danger">{{ $errors->first('nomor_penerbangan') }}</span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="rute_penerbangan">Rute Destinasi</label>

@@ -4,6 +4,7 @@
 @section('content')
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Data Penerbangan</title>
     <!-- DataTables CSS -->
@@ -80,19 +81,23 @@
             background-color: #218838;
             /* Darker green on hover */
         }
+
         /* Improved pagination styling */
         .pagination {
             margin: 20px 0;
             /* Margin for spacing */
         }
+
         .pagination .page-item.active .page-link {
             background-color: #007bff;
             border-color: #007bff;
         }
+
         .pagination .page-link {
             color: #007bff;
             /* Primary color for links */
         }
+
         .pagination .page-link:hover {
             background-color: #e9ecef;
             /* Light grey background on hover */
@@ -102,10 +107,20 @@
 </head>
 
 <body>
-    <div class="content">
+<div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
+                <!-- Display error messages -->
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                     @if (session('pesan'))
                     <div class="alert alert-success">
                         {{ session('pesan') }}
@@ -145,14 +160,14 @@
                             @endforeach
                         </tbody>
                     </table>
-                        <!-- Improved pagination links -->
-                        <div class="pagination">
-                            {{ $penerbangans->links('pagination::bootstrap-4') }}
-                        </div>
+                    <!-- Improved pagination links -->
+                    <div class="pagination">
+                        {{ $penerbangans->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Modal for adding data -->
@@ -170,11 +185,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="nomor_penerbangan">Nomor Penerbangan</label>
-                            <select name="nomor_penerbangan" id="nomor_penerbangan" class="form-control">
-                                <option value="GA175">GA175</option>
-                                <option value="GA177">GA177</option>
-                                <option value="GA179">GA179</option>
-                            </select>
+                            <input type="text" name="nomor_penerbangan" id="nomor_penerbangan" class="form-control" placeholder="Masukkan nomor penerbangan" required>
                         </div>
                         <div class="form-group">
                             <label for="rute_penerbangan">Rute Destinasi</label>
@@ -192,6 +203,23 @@
     </div>
 
 </body>
+
 </html>
 
+<script>
+    document.getElementById('nomor_penerbangan').addEventListener('input', function() {
+        const input = this.value.toUpperCase();
+        const prefix = "GA";
+
+        // Ensure the input starts with "GA"
+        if (!input.startsWith(prefix)) {
+            this.value = prefix + input.substring(2);
+        }
+
+        // Limit the number of digits after "GA" to 5
+        if (input.length > 7) {
+            this.value = input.substring(0, 7);
+        }
+    });
+</script>
 @endsection
