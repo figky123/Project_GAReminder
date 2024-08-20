@@ -103,6 +103,11 @@
         .alert-success {
             text-align: center;
         }
+
+        .remove-phone {
+            color: red;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -125,7 +130,14 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="no_hp">Nomor Telepon</label>
-                                    <input type="text" class="form-control" id="no_hp" name="no_hp" required>
+                                    <div id="phone-group">
+                                        <div class="input-group mb-2">
+                                            <input type="text" class="form-control" name="no_hp[]" required>
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-success add-phone"><i class="fas fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="nomor_penerbangan">Nomor Penerbangan</label>
@@ -166,6 +178,28 @@
             </div>
         </div>
     </div>
+
+    <!-- jQuery Script to add and remove phone inputs -->
+    <script>
+        $(document).ready(function() {
+            // Add new phone input
+            $('.add-phone').click(function() {
+                let newPhoneInput = `
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" name="no_hp[]" required>
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-danger remove-phone"><i class="fas fa-minus"></i></button>
+                    </div>
+                </div>`;
+                $('#phone-group').append(newPhoneInput);
+            });
+
+            // Remove phone input
+            $(document).on('click', '.remove-phone', function() {
+                $(this).closest('.input-group').remove();
+            });
+        });
+    </script>
 </body>
 
 </html>
