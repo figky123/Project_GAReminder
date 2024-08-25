@@ -157,8 +157,17 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="isi_pesan">Pesan Teks</label>
-                                    <textarea class="form-control" id="isi_pesan" name="isi_pesan" rows="3" required></textarea>
+                                    <textarea class="form-control" id="isi_pesan" name="isi_pesan" rows="10" required>
+Yth. Penumpang GA177. 
+Pastikan dokumen penerbangan anda sudah sesuai dengan regulasi terbaru di bit.ly/InfoCovid19GA
+Info lebih lanjut hub Live Chat bit.ly/livechatgaruda atau Call Center 08041807807. 
+
+Dapatkan potongan hingga 80% untuk pembelian bagasi di awal. Harga mulai dari Rp 38.800/kg
+
+Terima kasih atas kepercayaan Anda untuk selalu terbang bersama Garuda Indonesia.
+    </textarea>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="status_tiket">Status Tiket</label>
                                     <select name="status_tiket" id="status_tiket" class="form-control">
